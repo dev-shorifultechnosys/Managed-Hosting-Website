@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corefinity - Managed Hosting Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B3B69', // Extracted from logo dark blue
+                            light: '#009FE3', // Extracted from logo light blue
+                            accent: '#00C2FF',
+                            gray: '#F3F6F9',
+                            text: '#1F2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'scroll': 'scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #009FE3; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0B3B69; }
+        
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease-in-out;
+        }
+        .group:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Smooth scroll behavior */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header & Mega Menu -->
+    <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Using FontAwesome as placeholder, normally would be the SVG/Image provided -->
+                    <div class="text-3xl font-bold tracking-tighter flex items-center">
+                        <img src="https://leanlivingjourney.com/wp-content/uploads/2025/12/Conlogo.svg" width="200px;" height="200px;">
+                        <!-- <span class="text-brand-dark">core</span><span class="text-brand-light">finity</span> -->
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#" class="text-sm font-medium hover:text-brand-light transition-colors">Home</a>
+                    
+                    <!-- Mega Menu Trigger -->
+                    <div class="group relative py-6">
+                        <button class="flex items-center gap-1 text-sm font-medium hover:text-brand-light transition-colors focus:outline-none">
+                            Solutions <i class="fa-solid fa-chevron-down text-xs opacity-70"></i>
+                        </button>
+                        
+                        <!-- Mega Menu Content -->
+                        <div class="mega-menu absolute left-1/2 -translate-x-1/2 top-full w-[800px] bg-white shadow-xl border-t-4 border-brand-light rounded-b-lg p-8 grid grid-cols-3 gap-8 z-50">
+                            <!-- Column 1 -->
+                            <div>
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Platforms</h3>
+                                <ul class="space-y-4">
+                                    <li>
+                                        <a href="#" class="group/item flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                            <div class="mt-1 text-brand-light"><i class="fa-brands fa-magento text-xl"></i></div>
+                                            <div>
+                                                <div class="font-semibold text-gray-900 group-hover/item:text-brand-light">Magento Hosting</div>
+                                                <p class="text-xs text-gray-500 mt-1">High performance for Adobe Commerce</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="group/item flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                            <div class="mt-1 text-brand-light"><i class="fa-brands fa-laravel text-xl"></i></div>
+                                            <div>
+                                                <div class="font-semibold text-gray-900 group-hover/item:text-brand-light">Laravel Hosting</div>
+                                                <p class="text-xs text-gray-500 mt-1">Optimized stack for Laravel apps</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Column 2 -->
+                            <div>
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Infrastructure</h3>
+                                <ul class="space-y-4">
+                                    <li>
+                                        <a href="#" class="group/item flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                            <div class="mt-1 text-brand-light"><i class="fa-solid fa-cloud text-xl"></i></div>
+                                            <div>
+                                                <div class="font-semibold text-gray-900 group-hover/item:text-brand-light">Cloud Hosting</div>
+                                                <p class="text-xs text-gray-500 mt-1">Scalable AWS & Google Cloud solutions</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="group/item flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                            <div class="mt-1 text-brand-light"><i class="fa-solid fa-server text-xl"></i></div>
+                                            <div>
+                                                <div class="font-semibold text-gray-900 group-hover/item:text-brand-light">Dedicated Servers</div>
+                                                <p class="text-xs text-gray-500 mt-1">Bare metal performance for enterprise</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 3 -->
+                            <div class="bg-brand-gray/50 p-4 rounded-lg">
+                                <h3 class="text-xs font-bold text-brand-dark uppercase tracking-wider mb-3">Why Corefinity?</h3>
+                                <p class="text-xs text-gray-600 mb-4 leading-relaxed">
+                                    Engineered by certified developers who understand the frustration of slow hosting.
+                                </p>
+                                <a href="#" class="text-xs font-bold text-brand-light hover:text-brand-dark flex items-center gap-1">
+                                    Read our story <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-sm font-medium hover:text-brand-light transition-colors">Agency</a>
+                    <a href="#" class="text-sm font-medium hover:text-brand-light transition-colors">Case Studies</a>
+                    <a href="#" class="text-sm font-medium hover:text-brand-light transition-colors">Support</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="#" class="px-6 py-2.5 bg-brand-light text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-lg shadow-brand-light/20">
+                        Chat to an Expert
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-2xl text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t absolute w-full left-0 shadow-lg">
+            <div class="p-4 space-y-4">
+                <a href="#" class="block text-sm font-medium text-gray-700">Home</a>
+                <div class="space-y-2">
+                    <div class="font-medium text-brand-light text-sm">Solutions</div>
+                    <a href="#" class="block pl-4 text-sm text-gray-600">Magento Hosting</a>
+                    <a href="#" class="block pl-4 text-sm text-gray-600">Laravel Hosting</a>
+                    <a href="#" class="block pl-4 text-sm text-gray-600">Cloud Infrastructure</a>
+                </div>
+                <a href="#" class="block text-sm font-medium text-gray-700">Agency</a>
+                <a href="#" class="block text-sm font-medium text-gray-700">Support</a>
+                <a href="#" class="block w-full text-center px-6 py-3 bg-brand-light text-white font-semibold rounded-lg">Chat to an Expert</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/33b4c62d52-0091820caecd5745c208.png" alt="abstract technology background server room blue lights depth of field minimalist high tech" />
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-medium mb-6 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-light animate-pulse"></span>
+                    Platform Agnostic Cloud Specialists
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Modernizing Hosting for <br>
+                    <span class="text-brand-light">Mission-Critical</span> Applications
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl leading-relaxed">
+                    We are infrastructure specialists dedicated to powering high-performance eCommerce and custom applications. Experience the difference of hosting built by developers, for developers.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="px-8 py-4 bg-brand-light text-white font-bold rounded-lg hover:bg-white hover:text-brand-dark transition-all shadow-lg shadow-brand-light/30 text-center">
+                        Chat to an Expert
+                    </a>
+                    <a href="#" class="px-8 py-4 bg-transparent border border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm text-center">
+                        View Solutions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Partner Scroller -->
+    <section id="partners" class="py-8 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4 lg:px-8 mb-4">
+            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest">Trusted Partners</p>
+        </div>
+        <div class="relative overflow-hidden w-full">
+            <div class="flex animate-scroll w-[200%]">
+                <!-- First Set -->
+                <div class="flex w-1/2 justify-around items-center px-8 gap-12 text-3xl">
+                    <i class="fa-brands fa-aws text-[#FF9900] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-google text-[#4285F4] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-cloudflare text-[#F38020] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-digital-ocean text-[#0080FF] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-linux text-[#FCC624] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-docker text-[#2496ED] hover:opacity-80 transition-opacity"></i>
+                </div>
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="flex w-1/2 justify-around items-center px-8 gap-12 text-3xl">
+                    <i class="fa-brands fa-aws text-[#FF9900] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-google text-[#4285F4] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-cloudflare text-[#F38020] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-digital-ocean text-[#0080FF] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-linux text-[#FCC624] hover:opacity-80 transition-opacity"></i>
+                    <i class="fa-brands fa-docker text-[#2496ED] hover:opacity-80 transition-opacity"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Platforms Scroller -->
+    <section id="platforms" class="py-6 bg-brand-gray border-b border-gray-200">
+        <div class="container mx-auto px-4 lg:px-8 mb-4">
+            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest">Supported Platforms</p>
+        </div>
+        <div class="flex justify-center flex-wrap gap-8 lg:gap-16 items-center hover:grayscale-0 transition-all duration-500">
+             <i class="fa-brands fa-magento text-4xl text-[#f26322]"></i>
+             <i class="fa-brands fa-laravel text-4xl text-[#FF2D20]"></i>
+             <i class="fa-brands fa-wordpress text-4xl text-[#21759b]"></i>
+             <i class="fa-brands fa-shopify text-4xl text-[#96bf48]"></i>
+             <i class="fa-brands fa-php text-4xl text-[#777BB4]"></i>
+        </div>
+    </section>
+
+    <!-- Hosting Built By Developers -->
+    <section id="story" class="py-20 lg:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl relative">
+                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9bd38ed238-b654f4c5ecbce224ce74.png" alt="team of developers working in modern office glass walls coding on monitors professional atmosphere" />
+                        <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+                            <div class="text-white font-bold text-xl">Founded by Magento Veterans</div>
+                            <div class="text-white/80 text-sm">Understanding the stack from the inside out.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brand-dark mb-6">
+                        Hosting: Built by (ex) Developers <br>
+                        <span class="text-brand-light">for Developers</span>
+                    </h2>
+                    <div class="space-y-6 text-gray-600 leading-relaxed">
+                        <p>
+                            Corefinity was founded by Magento developers who were frustrated with slow, inflexible hosting and set out to build the fastest, most reliable eCommerce stack. Our platform is engineered by certified developers and engineers with years of hands-on experience supporting Magento, Shopware and other leading platforms.
+                        </p>
+                        <p>
+                            Every part of the stack is developer and agency friendly, with the tools, documentation and support you need to ship quickly and scale confidently. This is hosting created by people who used to build stores every day, trusted by hundreds of merchants to power secure and successful eCommerce.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#" class="inline-flex items-center gap-2 text-brand-light font-bold hover:text-brand-dark transition-colors">
+                            Read more about our story <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Clients -->
+    <section id="trusted-clients" class="py-16 bg-brand-dark text-white overflow-hidden">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h3 class="text-center text-xl font-semibold mb-12">Trusted by Industry Leaders</h3>
+            <div class="relative">
+                <div class="flex animate-scroll w-[200%]">
+                    <!-- First Set -->
+                    <div class="flex w-1/2 justify-around items-center gap-16 px-8">
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/ego.svg" alt="ego shoes fashion brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/Angling-Direct.png" alt="mercedes benz logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/jml.svg" alt="luxury fashion ecommerce brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/lcfc-logo.webp" alt="premium retail brand logo white on dark background" />
+                        </div>
+                    </div>
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="flex w-1/2 justify-around items-center gap-16 px-8">
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/Mercedes-SW.svg" alt="ego shoes fashion brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/my1styears-copy.svg" alt="mercedes benz logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/petertyson.svg" alt="luxury fashion ecommerce brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/ribblecycles.png" alt="premium retail brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/T.H.-Baker.svg" alt="premium retail brand logo white on dark background" />
+                        </div>
+                        <div class="h-16 flex items-center">
+                            <img class="h-full w-auto object-contain opacity-70 hover:opacity-100" src="https://leanlivingjourney.com/wp-content/uploads/2025/12/TFL-logo.webp" alt="premium retail brand logo white on dark background" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redefine Ecommerce Hosting -->
+    <section id="features" class="py-20 lg:py-32 bg-brand-gray relative">
+        <!-- Decorative element -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gray-100 skew-x-12 hidden lg:block"></div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-brand-dark mb-4">Let Us Redefine Your <br>eCommerce Hosting</h2>
+                <p class="text-gray-600">We don't just host your site; we optimize it for success.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Box A: Performance -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-light">
+                    <div class="w-12 h-12 bg-brand-light/10 rounded-lg flex items-center justify-center mb-6 text-brand-light text-2xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Performance</h3>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Blazing fast load times with optimized server stacks and advanced caching mechanisms designed for eCommerce.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-brand-light hover:text-brand-dark">Find out more &rarr;</a>
+                </div>
+
+                <!-- Box B: Scalability -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-dark">
+                    <div class="w-12 h-12 bg-brand-dark/10 rounded-lg flex items-center justify-center mb-6 text-brand-dark text-2xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Scalability</h3>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Infrastructure that grows with you. Handle traffic spikes during Black Friday without breaking a sweat.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-brand-dark hover:text-brand-light">Find out more &rarr;</a>
+                </div>
+
+                <!-- Box C: Security -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-light">
+                    <div class="w-12 h-12 bg-brand-light/10 rounded-lg flex items-center justify-center mb-6 text-brand-light text-2xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Security</h3>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Enterprise-grade security, DDoS protection, and proactive monitoring to keep your data safe 24/7.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-brand-light hover:text-brand-dark">Find out more &rarr;</a>
+                </div>
+
+                <!-- Box D: Support -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-dark">
+                    <div class="w-12 h-12 bg-brand-dark/10 rounded-lg flex items-center justify-center mb-6 text-brand-dark text-2xl">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Support</h3>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Direct access to engineers, not scripts. Our team acts as an extension of your own development department.
+                    </p>
+                    <a href="#" class="text-sm font-bold text-brand-dark hover:text-brand-light">Find out more &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case-studies" class="py-20 lg:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-brand-light font-bold uppercase tracking-wider text-sm">Success Stories</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-brand-dark mt-2">Proven Results</h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex px-6 py-2 border border-brand-dark text-brand-dark font-medium rounded-full hover:bg-brand-dark hover:text-white transition-colors">
+                    View All Case Studies
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Case Study 1: EGO -->
+                <div class="group relative rounded-2xl overflow-hidden h-[500px] shadow-xl">
+                    <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/f65942bbe8-eca27a698846f9b2f268.png" alt="fashion model shoes ecommerce website dark background elegant" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="text-white text-3xl font-bold mb-2">EGO</div>
+                        <p class="text-gray-300 mb-6 line-clamp-2">Migrating high-volume fashion retailer EGO to a scalable cluster, resulting in 40% faster page loads.</p>
+                        <a href="#" class="inline-block px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-brand-light hover:text-white transition-colors">Read Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Mercedes-Benz -->
+                <div class="group relative rounded-2xl overflow-hidden h-[500px] shadow-xl">
+                    <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/464d65511f-e765a071b96852dffc6c.png" alt="luxury car steering wheel interior detail dark moody professional photography" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="text-white text-3xl font-bold mb-2">Mercedes-Benz</div>
+                        <p class="text-gray-300 mb-6 line-clamp-2">Delivering mission-critical infrastructure for the automotive giant's internal parts system.</p>
+                        <a href="#" class="inline-block px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-brand-light hover:text-white transition-colors">Find out more</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                 <a href="#" class="inline-block px-6 py-3 border border-brand-dark text-brand-dark font-medium rounded-full">
+                    View All Case Studies
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section id="metrics" class="py-16 bg-brand-dark text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-brand-light mb-2">99.99%</div>
+                    <div class="text-lg font-medium">Uptime Average</div>
+                    <p class="text-sm text-gray-400 mt-2">Consistent reliability you can count on</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-brand-light mb-2">24/7/365</div>
+                    <div class="text-lg font-medium">UK Based Support</div>
+                    <p class="text-sm text-gray-400 mt-2">Global coverage, local expertise</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-brand-light mb-2">7 Min</div>
+                    <div class="text-lg font-medium">Avg Response Time</div>
+                    <p class="text-sm text-gray-400 mt-2">Emergency support when you need it</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section id="what-you-get" class="py-20 lg:py-32 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-center text-brand-dark mb-16">What you get with Corefinity</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 text-2xl">
+                        <i class="fa-brands fa-magento"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Magento Specialists</h4>
+                    <p class="text-sm text-gray-500 mt-2">Certified Adobe Commerce experts</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 text-2xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">GDPR Compliant</h4>
+                    <p class="text-sm text-gray-500 mt-2">Secure processes and handling</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-green-100 flex items-center justify-center text-green-500 text-2xl">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Direct Engineer Access</h4>
+                    <p class="text-sm text-gray-500 mt-2">No first line filters</p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 text-2xl">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Control Panel & CI/CD</h4>
+                    <p class="text-sm text-gray-500 mt-2">Modern deployment pipelines</p>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-teal-100 flex items-center justify-center text-teal-500 text-2xl">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Scheduled Reviews</h4>
+                    <p class="text-sm text-gray-500 mt-2">Infrastructure & performance checks</p>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-2xl">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Security First</h4>
+                    <p class="text-sm text-gray-500 mt-2">Evidence packs on request</p>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 text-2xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Post Incident Reviews</h4>
+                    <p class="text-sm text-gray-500 mt-2">Documented runbooks</p>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 mb-4 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-500 text-2xl">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900">Observability</h4>
+                    <p class="text-sm text-gray-500 mt-2">Logs & APM for diagnosis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Audits -->
+    <section id="audits" class="py-20 lg:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/3">
+                    <h2 class="text-3xl font-bold text-brand-dark mb-6">Performance Audits: Proof beats promises.</h2>
+                    <p class="text-gray-600 mb-8">
+                        Explore our performance audits against leading competitors. We are faster 100% of the time. We don't just say we're fast, we prove it with data.
+                    </p>
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-brand-light text-white font-bold rounded-lg hover:bg-brand-dark transition-colors shadow-lg shadow-brand-light/30">
+                        View all Performance Audits
+                    </a>
+                </div>
+                <div class="lg:w-2/3">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 border-b border-gray-200">
+                                        <th class="p-4 font-bold text-gray-600 text-sm uppercase">Environment</th>
+                                        <th class="p-4 font-bold text-gray-600 text-sm uppercase">Home</th>
+                                        <th class="p-4 font-bold text-gray-600 text-sm uppercase">Category</th>
+                                        <th class="p-4 font-bold text-gray-600 text-sm uppercase">Product</th>
+                                        <th class="p-4 font-bold text-gray-600 text-sm uppercase">Basket</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr>
+                                        <td class="p-4 font-medium text-gray-900 flex items-center gap-2">
+                                            <span class="w-3 h-3 rounded-full bg-gray-300"></span> Competitor A
+                                        </td>
+                                        <td class="p-4 text-gray-600">1.2s</td>
+                                        <td class="p-4 text-gray-600">1.5s</td>
+                                        <td class="p-4 text-gray-600">1.4s</td>
+                                        <td class="p-4 text-gray-600">0.9s</td>
+                                    </tr>
+                                    <tr class="bg-brand-light/5">
+                                        <td class="p-4 font-bold text-brand-dark flex items-center gap-2">
+                                            <span class="w-3 h-3 rounded-full bg-brand-light"></span> Corefinity
+                                        </td>
+                                        <td class="p-4 font-bold text-brand-light">0.3s</td>
+                                        <td class="p-4 font-bold text-brand-light">0.4s</td>
+                                        <td class="p-4 font-bold text-brand-light">0.3s</td>
+                                        <td class="p-4 font-bold text-brand-light">0.2s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-medium text-gray-500 italic">Improvement</td>
+                                        <td class="p-4 text-green-600 font-bold">4x Faster</td>
+                                        <td class="p-4 text-green-600 font-bold">3.75x Faster</td>
+                                        <td class="p-4 text-green-600 font-bold">4.6x Faster</td>
+                                        <td class="p-4 text-green-600 font-bold">4.5x Faster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark to-black opacity-90"></div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl font-bold text-white mb-12">Watch our Client Testimonials</h2>
+            
+            <div class="max-w-4xl mx-auto relative group cursor-pointer">
+                <!-- Video Placeholder -->
+                <div class="aspect-video bg-gray-800 rounded-2xl overflow-hidden shadow-2xl relative border border-white/10">
+                    <img class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e958fb67ac-865311910045b1c5f4ba.png" alt="professional corporate interview setting man speaking office background" />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-20 h-20 bg-brand-light rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-play text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 flex justify-center gap-4">
+                    <button class="w-12 h-12 rounded-full border border-white/20 text-white hover:bg-white hover:text-brand-dark transition-colors flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-white/20 text-white hover:bg-white hover:text-brand-dark transition-colors flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Specs CTA -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <i class="fa-solid fa-file-code text-4xl text-gray-400 mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Need Technical Details?</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Dive deep into our infrastructure specifications, API documentation, and deployment guides.</p>
+            <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-brand-light hover:text-brand-light transition-colors">
+                <i class="fa-solid fa-book"></i> View Support Docs
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <div class="text-3xl font-bold tracking-tighter flex items-center mb-6">
+                        <img src="https://leanlivingjourney.com/wp-content/uploads/2025/12/Conlogo.svg" width="200px;" height="200px;">
+                        <!-- <span class="text-white">core</span><span class="text-brand-light">finity</span> -->
+                    </div>
+                    <p class="text-white text-sm leading-relaxed mb-6">
+                        Managed hosting built by developers for developers. We provide the fastest, most reliable eCommerce stack for mission-critical applications.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-light transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-light transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-light transition-colors"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Solutions</h4>
+                    <ul class="space-y-3 text-white text-sm">
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Magento Hosting</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Laravel Hosting</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Enterprise Cloud</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Dedicated Servers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Company</h4>
+                    <ul class="space-y-3 text-white text-sm">
+                        <li><a href="#" class="hover:text-brand-light transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-light transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-white text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-light"></i>
+                            <span>123 Tech Avenue, London,<br>United Kingdom, SW1A 1AA</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-light"></i>
+                            <span>+44 (0) 20 1234 5678</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-light"></i>
+                            <span>hello@corefinity.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white">
+                <div>&copy; 2025 Corefinity. All rights reserved.</div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">SLA</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
